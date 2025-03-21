@@ -40,6 +40,18 @@ local function ShowHitchingPostMenu()
     lib.showContext('hitchingpost_selection_menu')
 end
 
+
+RegisterNetEvent('rsg-hitchingpost:client:openHitchingPostMenu', function()
+    
+    ExecuteCommand('closeInv')
+    
+    
+    CreateThread(function()
+        Wait(500) 
+        ShowHitchingPostMenu()
+    end)
+end)
+
 local function RegisterHitchingPostTargeting()
     local models = {}
     for _, hitchingPost in ipairs(HITCHING_POST_PROPS) do
@@ -534,6 +546,3 @@ CreateThread(function()
     RegisterHitchingPostTargeting()
 end)
 
-RegisterNetEvent('rsg-hitchingpost:client:openHitchingPostMenu', function()
-    ShowHitchingPostMenu()
-end)
